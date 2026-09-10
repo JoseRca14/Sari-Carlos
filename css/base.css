@@ -1,0 +1,238 @@
+/**
+ * ==============================================================================
+ * ESTILOS BASE Y TIPOGRAFÍA
+ * ==============================================================================
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces sin estilo tosco */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Imágenes fluidas */
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botones accesibles */
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Campos de formulario */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: inherit;
+}
+
+/* Enfoque accesible */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Enlace para lectores de pantalla */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 1rem;
+  background: var(--color-text);
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* CLASES TIPOGRÁFICAS EDITORIALES */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.heading-hero-names {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #FFFFFF;
+}
+
+.heading-section {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.heading-section-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.heading-card {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.eyebrow-light {
+  color: var(--color-primary-light);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* CONTENEDOR CENTRAL DE LA APLICACIÓN */
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+.section-padding {
+  padding-top: clamp(3.5rem, 8vw, 6rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+}
+
+/* SEPARADORES ORNAMENTALES */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem auto 2.5rem;
+  max-width: 280px;
+}
+
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+.divider-ornament .symbol {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* ANIMACIONES AL SCROLL (IntersectionObserver) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PREFERS-REDUCED-MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
