@@ -63,7 +63,7 @@ const weddingConfig = {
     // Número con código de país, sin signos ni espacios (Ej: México 52 + 10 dígitos)
     whatsappNumber: "523329156763",
     displayPhone: "+52 (33) 291563",
-    rsvpDeadline: "30 de Noviembre de 2026"
+    rsvpDeadline: "19 de Diciembre de 2026"
   },
 
   // 7. CÓDIGO DE VESTIMENTA (DRESS CODE)
@@ -160,7 +160,7 @@ const weddingConfig = {
       description: "Durante un viaje inolvidable al atardecer frente al mar, Alejandro se arrodilló con lágrimas de emoción y Sofía dijo que sí con todo el corazón."
     },
     {
-      year: "15 Noviembre 2026",
+      year: "19 Diciembre 2026",
       title: "El Gran Día",
       description: "Frente a Dios, a nuestras familias y a ustedes, uniremos nuestras vidas para siempre en un amor sin final."
     }
@@ -172,60 +172,60 @@ const weddingConfig = {
       src: "assets/images/gallery-1.jpg",
       thumb: "assets/images/gallery-1.jpg",
       caption: "Nuestras alianzas de compromiso",
-      alt: "Alianzas de boda doradas sobre terciopelo"
+      alt: "Aas sobre terciopelo"
     },
     {
       src: "assets/images/gallery-2.jpg",
       thumb: "assets/images/gallery-2.jpg",
-      caption: "El ramo nupcial y detalles florales",
+      caption: "El dia en que tomamos la mejor decisión de nuestras vidas",
       alt: "Ramo de novia en tonos marfil y beige"
     },
     {
       src: "assets/images/gallery-3.jpg",
       thumb: "assets/images/gallery-3.jpg",
-      caption: "La novia en su máxima elegancia",
+      caption: "Nuestro Amor es mas que real",
       alt: "Velo nupcial y vestido de alta costura"
     },
     {
       src: "assets/images/gallery-4.jpg",
       thumb: "assets/images/gallery-4.jpg",
-      caption: "Detalles del novio",
+      caption: "Nuestro amor es eterno y verdadero",
       alt: "Mancuernillas y reloj formal del novio"
     },
     {
       src: "assets/images/gallery-5.jpg",
       thumb: "assets/images/gallery-5.jpg",
-      caption: "El templo preparado para el enlace",
+      caption: "El comienzo de nuestra eternidad",
       alt: "Pasillo nupcial con arreglos de flores blancas"
     },
     {
       src: "assets/images/gallery-6.jpg",
       thumb: "assets/images/gallery-6.jpg",
-      caption: "Mesa de banquete a la luz de las velas",
+      caption: "Un amor que nos trajo hasta aquí",
       alt: "Decoración de mesas para recepción de boda"
     },
     {
       src: "assets/images/gallery-7.jpg",
       thumb: "assets/images/gallery-7.jpg",
-      caption: "Atardecer dorado juntos",
+      caption: "Un poco de nosotros, un poco de nuestro amor",
       alt: "Pareja caminando de la mano durante la hora dorada"
     },
     {
       src: "assets/images/gallery-8.jpg",
       thumb: "assets/images/gallery-8.jpg",
-      caption: "Brindis con champagne y pastel",
+      caption: "Miradas que dicen más que mil palabras",
       alt: "Copas de champagne listas para el brindis"
     },
     {
       src: "assets/images/gallery-9.jpg",
       thumb: "assets/images/gallery-9.jpg",
-      caption: "Primer baile como esposos",
+      caption: "Cada paso nos acercaba a nuestro destino",
       alt: "Pareja abrazada en la pista de baile"
     },
     {
       src: "assets/images/gallery-10.jpg",
       thumb: "assets/images/gallery-10.jpg",
-      caption: "Risas que durarán toda la vida",
+      caption: "Momentos que durarán toda la vida",
       alt: "Pareja compartiendo una sonrisa espontánea"
     }
   ],

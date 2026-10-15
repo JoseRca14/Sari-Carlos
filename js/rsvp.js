@@ -58,27 +58,29 @@ function initRSVP(config) {
 
     let whatsappText = "";
 
-    if (attendance === "yes") {
-      whatsappText = `¡Hola! Soy *${name}*.\n` +
-        `Confirmo con mucha alegría mi asistencia a la boda de *${bride}* y *${groom}*.\n` +
-        `👥 *Acompañantes adicionales:* ${guests}\n`;
-      if (message) {
-        whatsappText += `💌 *Mensaje / Restricciones:* ${message}\n`;
-      }
-      whatsappText += `\n¡Nos vemos pronto para celebrar juntos! ✨🥂`;
-    } else {
-      whatsappText = `¡Hola! Soy *${name}*.\n` +
-        `Lamentablemente no podré acompañarlos a la boda de *${bride}* y *${groom}*, pero les envío mis mejores deseos y bendiciones en esta nueva etapa.\n`;
-      if (message) {
-        whatsappText += `💌 *Mensaje con cariño:* ${message}\n`;
-      }
-    }
+if (attendance === "yes") {
+  whatsappText = "Hola, soy " + name + ".\n" +
+    `Confirmo con mucha alegría mi asistencia a la boda de *${bride}* y *${groom}*.\n` +
+    `Acompañantes adicionales: *${guests}*\n`;
 
-    // Limpiar caracteres del número (solo dígitos)
-    const cleanPhone = phone.replace(/[^0-9]/g, "");
-    const encodedText = encodeURIComponent(whatsappText);
-    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedText}`;
+  if (message) {
+    whatsappText += `Mensaje / Restricciones: ${message}\n`;
+  }
 
+  whatsappText += `\n¡Nos vemos pronto para celebrar juntos!`;
+} else {
+  whatsappText = `¡Hola! Soy *${name}*.\n` +
+    `Lamentablemente no podré acompañarlos a la boda de *${bride}* y *${groom}*, pero les envío mis mejores deseos y bendiciones en esta nueva etapa.\n`;
+
+  if (message) {
+    whatsappText += `Mensaje con cariño: ${message}\n`;
+  }
+}
+
+// Limpiar caracteres del número (solo dígitos)
+const cleanPhone = phone.replace(/[^0-9]/g, "");
+const encodedText = encodeURIComponent(whatsappText);
+const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedText}`;
     // Abrir WhatsApp en pestaña nueva
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
