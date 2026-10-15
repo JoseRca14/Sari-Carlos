@@ -44,6 +44,7 @@ const weddingConfig = {
     time: "5:00 p.m.",
     address: "calle. Miguel Hidalgo, 47778, Margaritas, Jal.",
     mapsUrl: "https://maps.app.goo.gl/VtHXBFRgoCLX98BJA",
+    wazeUrl: "https://waze.com/ul?ll=20.452952,-102.477826&navigate=yes",
     // Si deseas embeber un mapa interactivo en la sección ubicación, coloca aquí el src del iframe de Google Maps:
     embedMapSrc: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d808.9083826179848!2d-102.4778264105843!3d20.452952090986248!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ec878d7aa7e0d%3A0x5a4b79d4e9e24c4!2sParroquia%20Margaritas!5e0!3m2!1ses-419!2smx!4v1789064318255!5m2!1ses-419!2smx"
   },
@@ -55,7 +56,8 @@ const weddingConfig = {
     date: "Sabado, 19 de Diciembre de 2026",
     time: "6:30 p.m.",
     address: "Francisco Sarabia 301, 47778 Margaritas, Jal..",
-    mapsUrl: "https://maps.app.goo.gl/8okCDPmBfpZQwBiF6"
+    mapsUrl: "https://maps.app.goo.gl/8okCDPmBfpZQwBiF6",
+    wazeUrl: "https://waze.com/ul?q=Salon+de+Eventos+Paraiso+las+Palmas+Margaritas+Jalisco&navigate=yes"
   },
 
   // 6. CONTACTO Y CONFIRMACIÓN DE ASISTENCIA (WhatsApp RSVP)

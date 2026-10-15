@@ -7,14 +7,14 @@
 
   <!-- SEO & OPEN GRAPH (WhatsApp, Facebook, iMessage) -->
   <title>Sari & Carlos | Nuestra Boda</title>
-  <meta name="description" content="Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial el 15 de Noviembre de 2026 en Guadalajara, Jal.">
+  <meta name="description" content="Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial el 19 de Diciembre de 2026 en Guadalajara, Jal.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FAF7F2">
 
   <!-- Open Graph / Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sari & Carlos | Nuestra Boda">
-  <meta property="og:description" content="Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial el 15 de Noviembre de 2026 en Guadalajara, Jal.">
+  <meta property="og:description" content="Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial el 19 de Diciembre de 2026 en Guadalajara, Jal.">
   <meta property="og:image" content="assets/images/og-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -128,6 +128,27 @@
           </div>
         </div>
 
+        <div class="calendar-actions reveal-on-scroll">
+          <button type="button" class="btn btn-outline btn-calendar" id="btn-add-calendar" aria-haspopup="true" aria-expanded="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            AGENDAR EN MI CALENDARIO
+          </button>
+          <div class="calendar-dropdown" id="calendar-dropdown" role="menu">
+            <a href="#" class="calendar-option" id="cal-google" target="_blank" rel="noopener noreferrer" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Google Calendar
+            </a>
+            <button type="button" class="calendar-option" id="cal-apple" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.6.69-1.12 1.83-.98 2.92 1.07.08 2.15-.55 2.79-1.32z"/></svg>
+              Apple Calendar / iCal
+            </button>
+            <a href="#" class="calendar-option" id="cal-outlook" target="_blank" rel="noopener noreferrer" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Outlook Calendar
+            </a>
+          </div>
+        </div>
+
         <div class="countdown-finished-msg" id="countdown-finished">
           ¡Hoy es nuestro gran día!
         </div>
@@ -166,10 +187,16 @@
             </div>
             <h4 class="event-venue" id="ceremony-venue">Parroquia San Miguel Arcángel</h4>
             <p class="event-address" id="ceremony-address">Av. Hidalgo 1450, Centro Histórico, Guadalajara, Jal.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="ceremony-maps-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              VER UBICACIÓN
-            </a>
+            <div class="event-actions-group">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map-app" id="ceremony-maps-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                GOOGLE MAPS
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-waze-app" id="ceremony-waze-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.8 11.5c-.2-.7-.5-1.4-.9-2-.9-1.4-2.3-2.3-3.9-2.6-1.5-.3-3.1.1-4.4 1-1.3.9-2.1 2.2-2.4 3.7-.3 1.5.1 3.1 1 4.3 1 1.2 2.3 2 3.8 2.2.3 0 .7.1 1 .1 1.7 0 3.3-.7 4.5-1.9 1-1 1.6-2.3 1.7-3.8.1-.4.1-.7-.4-1zm-9.3.2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm4.8 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-1.1 3.5c-.8 0-1.5-.4-1.8-1.1-.1-.2 0-.5.2-.6.2-.1.5 0 .6.2.2.4.6.6 1 .6s.9-.2 1-.6c.1-.2.4-.3.6-.2.2.1.3.4.2.6-.3.7-1 1.1-1.8 1.1z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2.1 21.9c-.2.5.3 1 .8.8l4.6-1.4c1.4.7 3 1.1 4.5 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.4 0-2.8-.4-4-1.1l-.3-.2-3.1.9.9-3.1-.2-.3C4.5 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                WAZE
+              </a>
+            </div>
           </article>
 
           <!-- Tarjeta de Recepción -->
@@ -189,10 +216,16 @@
             </div>
             <h4 class="event-venue" id="reception-venue">Jardín Los Olivos</h4>
             <p class="event-address" id="reception-address">Camino Real a Colima 520, Santa Ana Tepetitlán, Zapopan, Jal.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="reception-maps-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              VER UBICACIÓN
-            </a>
+            <div class="event-actions-group">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map-app" id="reception-maps-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                GOOGLE MAPS
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-waze-app" id="reception-waze-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.8 11.5c-.2-.7-.5-1.4-.9-2-.9-1.4-2.3-2.3-3.9-2.6-1.5-.3-3.1.1-4.4 1-1.3.9-2.1 2.2-2.4 3.7-.3 1.5.1 3.1 1 4.3 1 1.2 2.3 2 3.8 2.2.3 0 .7.1 1 .1 1.7 0 3.3-.7 4.5-1.9 1-1 1.6-2.3 1.7-3.8.1-.4.1-.7-.4-1zm-9.3.2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm4.8 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-1.1 3.5c-.8 0-1.5-.4-1.8-1.1-.1-.2 0-.5.2-.6.2-.1.5 0 .6.2.2.4.6.6 1 .6s.9-.2 1-.6c.1-.2.4-.3.6-.2.2.1.3.4.2.6-.3.7-1 1.1-1.8 1.1z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2.1 21.9c-.2.5.3 1 .8.8l4.6-1.4c1.4.7 3 1.1 4.5 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.4 0-2.8-.4-4-1.1l-.3-.2-3.1.9.9-3.1-.2-.3C4.5 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                WAZE
+              </a>
+            </div>
           </article>
         </div>
       </div>
@@ -346,20 +379,32 @@
             <div class="event-time-badge">Ceremonia</div>
             <h3 class="event-venue" id="location-venue-ceremony">Parroquia San Miguel Arcángel</h3>
             <p class="event-address" id="location-address-ceremony">Av. Hidalgo 1450, Centro Histórico, Guadalajara, Jal.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="location-maps-btn-ceremony">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              ABRIR EN GOOGLE MAPS
-            </a>
+            <div class="event-actions-group">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map-app" id="location-maps-btn-ceremony">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                GOOGLE MAPS
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-waze-app" id="location-waze-btn-ceremony">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.8 11.5c-.2-.7-.5-1.4-.9-2-.9-1.4-2.3-2.3-3.9-2.6-1.5-.3-3.1.1-4.4 1-1.3.9-2.1 2.2-2.4 3.7-.3 1.5.1 3.1 1 4.3 1 1.2 2.3 2 3.8 2.2.3 0 .7.1 1 .1 1.7 0 3.3-.7 4.5-1.9 1-1 1.6-2.3 1.7-3.8.1-.4.1-.7-.4-1zm-9.3.2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm4.8 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-1.1 3.5c-.8 0-1.5-.4-1.8-1.1-.1-.2 0-.5.2-.6.2-.1.5 0 .6.2.2.4.6.6 1 .6s.9-.2 1-.6c.1-.2.4-.3.6-.2.2.1.3.4.2.6-.3.7-1 1.1-1.8 1.1z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2.1 21.9c-.2.5.3 1 .8.8l4.6-1.4c1.4.7 3 1.1 4.5 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.4 0-2.8-.4-4-1.1l-.3-.2-3.1.9.9-3.1-.2-.3C4.5 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                WAZE
+              </a>
+            </div>
           </div>
 
           <div class="event-card reveal-on-scroll" style="padding: 1.5rem;">
             <div class="event-time-badge">Recepción</div>
             <h3 class="event-venue" id="location-venue-reception">Jardín Los Olivos</h3>
             <p class="event-address" id="location-address-reception">Camino Real a Colima 520, Santa Ana Tepetitlán, Zapopan, Jal.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="location-maps-btn-reception">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              ABRIR EN GOOGLE MAPS
-            </a>
+            <div class="event-actions-group">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map-app" id="location-maps-btn-reception">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                GOOGLE MAPS
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-waze-app" id="location-waze-btn-reception">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.8 11.5c-.2-.7-.5-1.4-.9-2-.9-1.4-2.3-2.3-3.9-2.6-1.5-.3-3.1.1-4.4 1-1.3.9-2.1 2.2-2.4 3.7-.3 1.5.1 3.1 1 4.3 1 1.2 2.3 2 3.8 2.2.3 0 .7.1 1 .1 1.7 0 3.3-.7 4.5-1.9 1-1 1.6-2.3 1.7-3.8.1-.4.1-.7-.4-1zm-9.3.2c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm4.8 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-1.1 3.5c-.8 0-1.5-.4-1.8-1.1-.1-.2 0-.5.2-.6.2-.1.5 0 .6.2.2.4.6.6 1 .6s.9-.2 1-.6c.1-.2.4-.3.6-.2.2.1.3.4.2.6-.3.7-1 1.1-1.8 1.1z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2.1 21.9c-.2.5.3 1 .8.8l4.6-1.4c1.4.7 3 1.1 4.5 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.4 0-2.8-.4-4-1.1l-.3-.2-3.1.9.9-3.1-.2-.3C4.5 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+                WAZE
+              </a>
+            </div>
           </div>
         </div>
 
@@ -408,7 +453,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-names" id="footer-couple-names">Sofía &amp; Alejandro</div>
-      <div class="footer-date" id="footer-date">15 de Noviembre de 2026</div>
+      <div class="footer-date" id="footer-date">19 de Diciembre de 2026</div>
       <div class="footer-love" id="footer-love-text">Con amor</div>
       <div class="footer-credit" id="footer-powered">Invitación digital</div>
     </div>

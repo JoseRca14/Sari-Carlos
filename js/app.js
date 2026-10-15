@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 7. CONFIGURAR ANIMACIONES AL SCROLL (IntersectionObserver)
   setupScrollAnimations();
+
+  // 8. CONFIGURAR AGENDAR EN CALENDARIO
+  setupCalendarIntegration(weddingConfig);
 });
 
 /**
@@ -102,21 +105,25 @@ function hydrateContent(cfg) {
   setText("ceremony-venue", cfg.ceremony.venue || "");
   setText("ceremony-address", cfg.ceremony.address || "");
   setLink("ceremony-maps-btn", cfg.ceremony.mapsUrl || "#");
+  setLink("ceremony-waze-btn", cfg.ceremony.wazeUrl || "#");
 
   setText("reception-date", cfg.reception.date || cfg.event.displayDate || "");
   setText("reception-time", cfg.reception.time || "");
   setText("reception-venue", cfg.reception.venue || "");
   setText("reception-address", cfg.reception.address || "");
   setLink("reception-maps-btn", cfg.reception.mapsUrl || "#");
+  setLink("reception-waze-btn", cfg.reception.wazeUrl || "#");
 
   // Sección ¿Cómo llegar? (Ubicación global)
   setText("location-venue-ceremony", cfg.ceremony.venue || "");
   setText("location-address-ceremony", cfg.ceremony.address || "");
   setLink("location-maps-btn-ceremony", cfg.ceremony.mapsUrl || "#");
+  setLink("location-waze-btn-ceremony", cfg.ceremony.wazeUrl || "#");
 
   setText("location-venue-reception", cfg.reception.venue || "");
   setText("location-address-reception", cfg.reception.address || "");
   setLink("location-maps-btn-reception", cfg.reception.mapsUrl || "#");
+  setLink("location-waze-btn-reception", cfg.reception.wazeUrl || "#");
 
   // Iframe de mapa si existe
   const mapIframe = document.getElementById("location-map-iframe");
@@ -299,12 +306,15 @@ function setupHeroOpenButton() {
   if (!openBtn) return;
 
   openBtn.addEventListener("click", () => {
-    // 1. Intentar iniciar música ambiental
+    // 1. Lanzar lluvia sutil de pétalos y destellos dorados
+    launchCelebrationAnimation();
+
+    // 2. Intentar iniciar música ambiental
     if (window.audioPlayer && weddingConfig.music && weddingConfig.music.autoplayOnOpen) {
       window.audioPlayer.play();
     }
 
-    // 2. Desplazar suavemente a la presentación de los novios
+    // 3. Desplazar suavemente a la presentación de los novios
     const nextSection = document.getElementById("nos-casamos");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
@@ -454,5 +464,225 @@ function escapeHTML(str) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
+/**
+ * Configura la integración interactiva con Calendarios (Google, Apple, Outlook)
+ */
+function setupCalendarIntegration(cfg) {
+  const btn = document.getElementById("btn-add-calendar");
+  const dropdown = document.getElementById("calendar-dropdown");
+  const googleBtn = document.getElementById("cal-google");
+  const appleBtn = document.getElementById("cal-apple");
+  const outlookBtn = document.getElementById("cal-outlook");
+
+  if (!btn || !dropdown) return;
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isActive = dropdown.classList.toggle("active");
+    btn.setAttribute("aria-expanded", isActive ? "true" : "false");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && e.target !== btn) {
+      dropdown.classList.remove("active");
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Datos del evento
+  const bride = (cfg.couple && cfg.couple.brideName) || "Sari";
+  const groom = (cfg.couple && cfg.couple.groomName) || "Carlos";
+  const venueChurch = (cfg.ceremony && cfg.ceremony.venue) || "Parroquia Margaritas";
+  const venueParty = (cfg.reception && cfg.reception.venue) || "Salón de Eventos Paraíso las Palmas";
+  const title = encodeURIComponent(`Boda ${bride} & ${groom}`);
+  const details = encodeURIComponent(
+    `Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial.\n\n` +
+    `⛪ Ceremonia Religiosa: 5:00 p.m. en ${venueChurch}\n` +
+    `🎉 Recepción & Brindis: 6:30 p.m. en ${venueParty}\n\n` +
+    `¡Te esperamos con alegría!`
+  );
+  const location = encodeURIComponent(`${venueChurch}, Margaritas, Jalisco`);
+
+  // 19 Dic 2026 17:00 local (UTC-6) = 23:00Z. Fin aprox 20 Dic 02:00 local = 08:00Z
+  const startUTC = "20261219T230000Z";
+  const endUTC = "20261220T080000Z";
+
+  if (googleBtn) {
+    googleBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startUTC}/${endUTC}&details=${details}&location=${location}`;
+  }
+
+  if (outlookBtn) {
+    outlookBtn.href = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=2026-12-19T17:00:00-06:00&enddt=2026-12-20T02:00:00-06:00&body=${details}&location=${location}`;
+  }
+
+  if (appleBtn) {
+    appleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const icsData = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Sari y Carlos//Boda//ES",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `SUMMARY:Boda ${bride} & ${groom}`,
+        `DESCRIPTION:Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial. Misa 5:00 p.m. en ${venueChurch} y Recepción 6:30 p.m. en ${venueParty}.`,
+        `LOCATION:${venueChurch}, Margaritas, Jal.`,
+        `DTSTART:${startUTC}`,
+        `DTEND:${endUTC}`,
+        "STATUS:CONFIRMED",
+        "BEGIN:VALARM",
+        "TRIGGER:-P1D",
+        "ACTION:DISPLAY",
+        `DESCRIPTION:Recordatorio: Mañana es la Boda de ${bride} & ${groom}`,
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute("download", `Boda-${bride}-y-${groom}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      dropdown.classList.remove("active");
+    });
+  }
+}
+
+/**
+ * Animación sutil de apertura: Lluvia de pétalos de rosa y destellos dorados
+ */
+function launchCelebrationAnimation() {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.id = "celebration-canvas";
+  canvas.style.position = "fixed";
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+  canvas.style.width = "100vw";
+  canvas.style.height = "100vh";
+  canvas.style.pointerEvents = "none";
+  canvas.style.zIndex = "9999";
+  canvas.style.transition = "opacity 1.2s ease-out";
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext("2d");
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }, { once: true });
+
+  const particles = [];
+  const petalColors = ["#E8A598", "#D9827B", "#C96D68", "#F4C2BA", "#E5B4AC"];
+  const goldColors = ["#D4AF37", "#F0DFAD", "#C5A880", "#EBD5AB"];
+
+  // 45 pétalos suaves
+  for (let i = 0; i < 45; i++) {
+    particles.push({
+      type: "petal",
+      x: Math.random() * width,
+      y: Math.random() * -height * 0.5 - 20,
+      size: 10 + Math.random() * 12,
+      speedY: 1.5 + Math.random() * 2.2,
+      speedX: (Math.random() - 0.5) * 1.5,
+      swaySpeed: 0.02 + Math.random() * 0.03,
+      swayOffset: Math.random() * Math.PI * 2,
+      rotation: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.04,
+      color: petalColors[Math.floor(Math.random() * petalColors.length)],
+      opacity: 0.75 + Math.random() * 0.25
+    });
+  }
+
+  // 40 destellos dorados
+  for (let i = 0; i < 40; i++) {
+    particles.push({
+      type: "gold",
+      x: Math.random() * width,
+      y: Math.random() * -height * 0.4,
+      size: 2 + Math.random() * 3.5,
+      speedY: 1.0 + Math.random() * 1.8,
+      speedX: (Math.random() - 0.5) * 1.2,
+      color: goldColors[Math.floor(Math.random() * goldColors.length)],
+      twinkle: Math.random() * Math.PI * 2,
+      twinkleSpeed: 0.05 + Math.random() * 0.08,
+      opacity: 0.6 + Math.random() * 0.4
+    });
+  }
+
+  const startTime = performance.now();
+  const DURATION = 4500;
+
+  function render(now) {
+    const elapsed = now - startTime;
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(p => {
+      if (p.type === "petal") {
+        p.swayOffset += p.swaySpeed;
+        p.x += Math.sin(p.swayOffset) * 1.8 + p.speedX;
+        p.y += p.speedY;
+        p.rotation += p.rotationSpeed;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.beginPath();
+        ctx.moveTo(0, -p.size * 0.8);
+        ctx.bezierCurveTo(p.size * 0.8, -p.size * 0.4, p.size * 0.6, p.size * 0.7, 0, p.size);
+        ctx.bezierCurveTo(-p.size * 0.6, p.size * 0.7, -p.size * 0.8, -p.size * 0.4, 0, -p.size * 0.8);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.fill();
+        ctx.restore();
+      } else {
+        p.twinkle += p.twinkleSpeed;
+        p.x += p.speedX;
+        p.y += p.speedY;
+        const currentAlpha = Math.abs(Math.sin(p.twinkle)) * p.opacity;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = currentAlpha;
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(-p.size * 2, 0);
+        ctx.lineTo(p.size * 2, 0);
+        ctx.moveTo(0, -p.size * 2);
+        ctx.lineTo(0, p.size * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+    });
+
+    if (elapsed < DURATION) {
+      requestAnimationFrame(render);
+    } else {
+      canvas.style.opacity = "0";
+      setTimeout(() => {
+        if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+      }, 1200);
+    }
+  }
+
+  requestAnimationFrame(render);
+}
+
 
 
