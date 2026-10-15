@@ -13,8 +13,8 @@ const weddingConfig = {
   couple: {
     brideName: "Sarai",
     groomName: "Carlos",
-    fullNameBride: "Sarai guadalupe cutirl aguila",
-    fullNameGroom: "Carlos el del refugio",
+    fullNameBride: "Sarai guadalupe cutirel aguila",
+    fullNameGroom: "Carlos",
     hashtag: "#BodaSariyCarlos",
     monogram: "S & C"
   },
@@ -22,7 +22,7 @@ const weddingConfig = {
   // 2. FECHA Y HORA PRINCIPAL (Para la cuenta regresiva y textos de portada)
   event: {
     // Formato ISO (YYYY-MM-DDTHH:MM:SS) - Usado por el motor del contador regresivo
-    targetDate: "2026-12-19T16:00:00",
+    targetDate: "2026-12-19T17:00:00",
     displayDate: "19 de Diciembre de 2026",
     shortDate: "19 · 12 · 2026",
     year: "2026",
@@ -41,7 +41,7 @@ const weddingConfig = {
     title: "Ceremonia Religiosa",
     venue: "Parroquia Margaritas",
     date: "Domingo, 19 de Diciembre de 2026",
-    time: "16:00 hrs",
+    time: "5:00 p.m.",
     address: "calle. Miguel Hidalgo, 47778, Margaritas, Jal.",
     mapsUrl: "https://maps.app.goo.gl/VtHXBFRgoCLX98BJA",
     // Si deseas embeber un mapa interactivo en la sección ubicación, coloca aquí el src del iframe de Google Maps:
@@ -53,7 +53,7 @@ const weddingConfig = {
     title: "Recepción & Brindis",
     venue: "Salón de Eventos Paraíso las Palmas",
     date: "Sabado, 19 de Diciembre de 2026",
-    time: "18:30 hrs",
+    time: "6:30 p.m.",
     address: "Francisco Sarabia 301, 47778 Margaritas, Jal..",
     mapsUrl: "https://maps.app.goo.gl/8okCDPmBfpZQwBiF6"
   },
@@ -66,23 +66,8 @@ const weddingConfig = {
     rsvpDeadline: "19 de Diciembre de 2026"
   },
 
-  // 7. CÓDIGO DE VESTIMENTA (DRESS CODE)
-  dressCode: {
-    badge: "Código de Vestimenta",
-    category: "Formal Rigurosa / Etiqueta",
-    description: "Queremos compartir este día tan especial contigo con la mayor elegancia. Te invitamos a vestir de acuerdo con el código establecido para nuestra celebración.",
-    suggestions: {
-      ladies: "Vestido largo de noche (se reserva con cariño el color blanco y tonos marfil para la novia).",
-      gentlemen: "Traje oscuro formal o smoking con corbata/corbatín."
-    },
-    suggestedPalette: [
-      { name: "Verde Esmeralda", hex: "#1C352D" },
-      { name: "Azul Medianoche", hex: "#1B263B" },
-      { name: "Borgoña / Vino", hex: "#4A1525" },
-      { name: "Champagne / Nude", hex: "#D4C2B0" },
-      { name: "Negro Clásico", hex: "#1F1F1F" }
-    ]
-  },
+  // 7. CÓDIGO DE VESTIMENTA (DRESS CODE) - Desactivado
+  dressCode: null,
 
   // 8. MÚSICA AMBIENTAL
   music: {
