@@ -305,19 +305,39 @@ function setupHeroOpenButton() {
   const openBtn = document.getElementById("hero-open-invitation-btn");
   if (!openBtn) return;
 
+  // Iniciar siempre arriba si la invitación está bloqueada
+  if (document.body.classList.contains("invitation-locked")) {
+    window.scrollTo(0, 0);
+  }
+
+  // Prevenir desplazamiento por teclado mientras esté bloqueado
+  window.addEventListener("keydown", (e) => {
+    if (document.body.classList.contains("invitation-locked")) {
+      if (["Space", "ArrowDown", "PageDown", "End"].includes(e.code) || e.key === " " || e.key === "ArrowDown" || e.key === "PageDown") {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
+
   openBtn.addEventListener("click", () => {
-    // 1. Lanzar lluvia sutil de pétalos y destellos dorados
+    // 1. Desbloquear desplazamiento en html y body
+    document.documentElement.classList.remove("invitation-locked");
+    document.body.classList.remove("invitation-locked");
+
+    // 2. Lanzar lluvia sutil de pétalos y destellos dorados
     launchCelebrationAnimation();
 
-    // 2. Intentar iniciar música ambiental
+    // 3. Intentar iniciar música ambiental
     if (window.audioPlayer && weddingConfig.music && weddingConfig.music.autoplayOnOpen) {
       window.audioPlayer.play();
     }
 
-    // 3. Desplazar suavemente a la presentación de los novios
+    // 4. Desplazar suavemente a la presentación de los novios
     const nextSection = document.getElementById("nos-casamos");
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        nextSection.scrollIntoView({ behavior: "smooth" });
+      }, 120);
     }
   });
 }
