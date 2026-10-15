@@ -1,0 +1,897 @@
+/**
+ * ==============================================================================
+ * ESTILOS DEL PANEL DE ADMINISTRACIÓN PRIVADO
+ * ==============================================================================
+ * Solo visible para el usuario 'tech' con contraseña 'Mon123'
+ * ==============================================================================
+ */
+
+/* 1. BOTÓN DISCRETO / OCULTO EN LA ESQUINA INFERIOR IZQUIERDA */
+.admin-secret-trigger {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(30, 27, 24, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9990;
+  opacity: 0.18;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.3s ease, transform 0.25s ease, background-color 0.3s ease;
+  padding: 0;
+  outline: none;
+}
+
+.admin-secret-trigger:hover,
+.admin-secret-trigger:focus-visible {
+  opacity: 1;
+  transform: scale(1.12);
+  background: #1C1917;
+  border-color: #C5A880;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.admin-secret-trigger svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+
+/* 2. MODAL DE AUTENTICACIÓN (LOGIN) */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 10, 9, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.admin-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.admin-login-box {
+  width: 100%;
+  max-width: 400px;
+  background: #1C1917;
+  color: #FAF7F2;
+  border-radius: 18px;
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 2.25rem 2rem;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.admin-modal-overlay.active .admin-login-box {
+  transform: translateY(0) scale(1);
+}
+
+.admin-login-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #A8A29E;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.admin-login-close:hover {
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.admin-login-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1rem;
+  background: rgba(197, 168, 128, 0.15);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C5A880;
+}
+
+.admin-login-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  color: #FFF;
+  letter-spacing: -0.01em;
+}
+
+.admin-login-desc {
+  font-size: 0.85rem;
+  color: #A8A29E;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.admin-form-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.admin-form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #D6D3D1;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #292524;
+  border: 1px solid #44403C;
+  border-radius: 10px;
+  color: #FFF;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: #C5A880;
+  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.25);
+}
+
+.admin-login-btn {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: #C5A880;
+  color: #1C1917;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.admin-login-btn:hover {
+  background: #D4B892;
+  transform: translateY(-1px);
+}
+
+.admin-login-btn:active {
+  transform: translateY(1px);
+}
+
+.admin-login-error {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #FCA5A5;
+  font-size: 0.85rem;
+  text-align: center;
+  animation: adminShake 0.4s ease;
+}
+
+@keyframes adminShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* 3. PANEL DE CONTROL LATERAL (DRAWER) */
+.admin-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 520px;
+  max-width: 100vw;
+  height: 100vh;
+  background: #141416;
+  color: #F4F4F5;
+  z-index: 9999;
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.admin-drawer.open {
+  transform: translateX(0);
+}
+
+/* Backdrop para móvil / clic fuera */
+.admin-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 9998;
+  display: none;
+}
+
+.admin-drawer-backdrop.active {
+  display: block;
+}
+
+/* Encabezado del Drawer */
+.admin-drawer-header {
+  padding: 1.25rem 1.5rem;
+  background: #18181B;
+  border-bottom: 1px solid #27272A;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.admin-drawer-title-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-drawer-title-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(197, 168, 128, 0.15);
+  color: #C5A880;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.admin-drawer-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FFF;
+}
+
+.admin-drawer-badge {
+  font-size: 0.7rem;
+  background: rgba(197, 168, 128, 0.2);
+  color: #D4B892;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-btn-logout {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #D4D4D8;
+  font-size: 0.75rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-btn-logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #F87171;
+}
+
+.admin-drawer-close {
+  background: transparent;
+  border: none;
+  color: #A1A1AA;
+  font-size: 1.5rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.admin-drawer-close:hover {
+  background: #27272A;
+  color: #FFF;
+}
+
+/* Pestañas de navegación */
+.admin-tabs-nav {
+  display: flex;
+  overflow-x: auto;
+  background: #18181B;
+  border-bottom: 1px solid #27272A;
+  padding: 0 0.5rem;
+  gap: 0.25rem;
+  scrollbar-width: none;
+}
+
+.admin-tabs-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-tab-btn {
+  background: transparent;
+  border: none;
+  color: #A1A1AA;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.85rem 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-tab-btn:hover {
+  color: #F4F4F5;
+}
+
+.admin-tab-btn.active {
+  color: #C5A880;
+  border-bottom-color: #C5A880;
+  font-weight: 600;
+}
+
+/* Contenido de las pestañas */
+.admin-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: #141416;
+}
+
+.admin-tab-pane {
+  display: none;
+}
+
+.admin-tab-pane.active {
+  display: block;
+  animation: adminFadeIn 0.25s ease;
+}
+
+@keyframes adminFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Encabezados de sección dentro del panel */
+.admin-section-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFF;
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-section-subtext {
+  font-size: 0.8rem;
+  color: #71717A;
+  margin: 0 0 1.25rem;
+  line-height: 1.4;
+}
+
+/* Tarjeta contenedora de opciones */
+.admin-card {
+  background: #1C1C1F;
+  border: 1px solid #27272A;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 4. SWITCHES PARA SECCIONES */
+.admin-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #27272A;
+}
+
+.admin-switch-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.admin-switch-row:first-child {
+  padding-top: 0;
+}
+
+.admin-switch-info {
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.admin-switch-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #E4E4E7;
+  margin: 0 0 0.2rem;
+}
+
+.admin-switch-desc {
+  font-size: 0.75rem;
+  color: #71717A;
+  margin: 0;
+}
+
+/* Componente Switch iOS-like */
+.admin-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.admin-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.admin-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #3F3F46;
+  transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 24px;
+}
+
+.admin-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+}
+
+.admin-switch input:checked + .admin-slider {
+  background-color: #C5A880;
+}
+
+.admin-switch input:checked + .admin-slider:before {
+  transform: translateX(20px);
+}
+
+/* 5. GESTOR DE COLORES Y PALETAS */
+.admin-palettes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-palette-btn {
+  background: #242428;
+  border: 1px solid #333338;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s;
+  color: #E4E4E7;
+}
+
+.admin-palette-btn:hover {
+  background: #2C2C32;
+  border-color: #C5A880;
+  transform: translateY(-1px);
+}
+
+.admin-palette-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.admin-p-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.admin-palette-name {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.admin-color-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #27272A;
+}
+
+.admin-color-picker-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.admin-color-label {
+  font-size: 0.82rem;
+  color: #D4D4D8;
+}
+
+.admin-color-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-color-hex {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #A1A1AA;
+  background: #27272A;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.admin-color-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.admin-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.admin-color-input::-webkit-color-swatch {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+/* 6. GESTOR DE IMÁGENES */
+.admin-img-editor-card {
+  background: #1E1E22;
+  border: 1px solid #2B2B30;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-img-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.admin-img-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFF;
+  margin: 0;
+}
+
+.admin-img-preview-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-img-thumbnail {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #27272A;
+  border: 1px solid #3F3F46;
+  flex-shrink: 0;
+}
+
+.admin-img-inputs {
+  flex: 1;
+}
+
+.admin-file-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #27272A;
+  color: #D4D4D8;
+  border: 1px solid #3F3F46;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-bottom: 0.4rem;
+  transition: all 0.2s;
+}
+
+.admin-file-upload-btn:hover {
+  background: #323238;
+  color: #FFF;
+  border-color: #C5A880;
+}
+
+.admin-file-upload-btn input {
+  display: none;
+}
+
+/* Galería en acordeón / lista */
+.admin-gallery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-gallery-item-row {
+  background: #1E1E22;
+  border: 1px solid #2B2B30;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.admin-gallery-thumb {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #3F3F46;
+  background: #27272A;
+  flex-shrink: 0;
+}
+
+.admin-gallery-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* 7. GESTOR DE MÚSICA */
+.admin-audio-tester {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #242428;
+  padding: 0.85rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.admin-audio-play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #C5A880;
+  border: none;
+  color: #18181B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.admin-audio-play-btn:hover {
+  transform: scale(1.06);
+  background: #D4B892;
+}
+
+.admin-audio-info {
+  flex: 1;
+}
+
+.admin-audio-info-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFF;
+  margin: 0;
+}
+
+.admin-audio-info-artist {
+  font-size: 0.75rem;
+  color: #A1A1AA;
+  margin: 0;
+}
+
+/* 8. BARRA DE ACCIONES INFERIOR */
+.admin-drawer-footer {
+  padding: 1.1rem 1.5rem;
+  background: #18181B;
+  border-top: 1px solid #27272A;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-btn-save {
+  flex: 1;
+  min-width: 160px;
+  background: #C5A880;
+  color: #141416;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.admin-btn-save:hover {
+  background: #D4B892;
+  transform: translateY(-1px);
+}
+
+.admin-btn-secondary {
+  background: #27272A;
+  color: #E4E4E7;
+  border: 1px solid #3F3F46;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-btn-secondary:hover {
+  background: #323238;
+  color: #FFF;
+}
+
+.admin-btn-reset {
+  background: transparent;
+  color: #A1A1AA;
+  border: 1px dashed #3F3F46;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-btn-reset:hover {
+  color: #F87171;
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* 9. NOTIFICACIÓN TOAST FLOTANTE */
+.admin-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #1C1917;
+  color: #FFF;
+  border: 1px solid #C5A880;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  z-index: 10002;
+  transform: translateY(-40px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.admin-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.admin-toast-icon {
+  color: #C5A880;
+  font-size: 1.1rem;
+}
+
+/* CLASE OCULTA PARA SECCIONES DE LA PÁGINA */
+.section-hidden {
+  display: none !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .admin-drawer {
+    width: 100vw;
+  }
+  .admin-drawer-footer {
+    flex-direction: column;
+  }
+  .admin-btn-save, .admin-btn-secondary, .admin-btn-reset {
+    width: 100%;
+    justify-content: center;
+  }
+}

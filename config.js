@@ -252,7 +252,7 @@ const weddingConfig = {
     title: "Sari & Carlos | Nuestra Boda",
     description: "Tenemos el honor de invitarte a celebrar nuestro enlace matrimonial el 19 de Diciembre de 2026 en Margaritas, Jal.",
     siteUrl: "https://tudominio.com",
-    ogImage: "assets/images/og-preview.jpg"
+    ogImage: "assets/images/og-preview.jpeg"
   }
 };
 

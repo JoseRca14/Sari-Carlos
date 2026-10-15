@@ -5,6 +5,15 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 0. FUSIONAR PERSONALIZACIONES DE LOCALSTORAGE SI EXISTEN
+  try {
+    const saved = localStorage.getItem("wedding_custom_config");
+    if (saved && window.weddingConfig) {
+      const parsed = JSON.parse(saved);
+      Object.assign(window.weddingConfig, parsed);
+    }
+  } catch (err) {}
+
   if (typeof weddingConfig === "undefined") {
     console.error("No se encontró el objeto weddingConfig en config.js.");
     return;
@@ -454,3 +463,12 @@ function escapeHTML(str) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
+// Exportación global para soporte del Personalizador de Administración
+window.hydrateMetadata = hydrateMetadata;
+window.hydrateContent = hydrateContent;
+window.renderTimeline = renderTimeline;
+window.renderGallery = renderGallery;
+window.renderGifts = renderGifts;
+window.renderDressCode = renderDressCode;
+
