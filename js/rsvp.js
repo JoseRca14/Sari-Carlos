@@ -32,12 +32,15 @@ function initRSVP(config) {
 
     const nameInput = document.getElementById("rsvp-name");
     const attendanceInput = form.querySelector("input[name='attendance']:checked");
-    const guestsSelect = document.getElementById("rsvp-guests");
+    const guestsInput = document.getElementById("rsvp-guests");
     const messageInput = document.getElementById("rsvp-message");
 
     const name = nameInput ? nameInput.value.trim() : "";
     const attendance = attendanceInput ? attendanceInput.value : "yes";
-    const guests = guestsSelect ? guestsSelect.value : "0";
+    const guestsRaw = guestsInput ? guestsInput.value.trim() : "0";
+    const guests = guestsRaw !== "" && !isNaN(guestsRaw) && parseInt(guestsRaw, 10) >= 0
+      ? parseInt(guestsRaw, 10).toString()
+      : (guestsRaw || "0");
     const message = messageInput ? messageInput.value.trim() : "";
 
     // Validación
