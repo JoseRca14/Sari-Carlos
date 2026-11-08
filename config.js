@@ -65,7 +65,7 @@ const weddingConfig = {
     // Número con código de país, sin signos ni espacios (Ej: México 52 + 10 dígitos)
     whatsappNumber: "523329156763",
     displayPhone: "+52 (33) 291563",
-    rsvpDeadline: "19 de Diciembre de 2026"
+    rsvpDeadline: "15 de Noviembre de 2026"
   },
 
   // 7. CÓDIGO DE VESTIMENTA (DRESS CODE) - Desactivado
@@ -227,7 +227,7 @@ const weddingConfig = {
     quoteAuthor: "Antoine de Saint-Exupéry",
     finalMessage: "Gracias por formar parte de nuestra historia y acompañarnos en el día más feliz de nuestras vidas.",
     rsvpTitle: "¿Nos acompañas?",
-    rsvpSubtitle: "Confirma tu asistencia antes del 30 de Octubre",
+    rsvpSubtitle: "Por favor confirma tu asistencia antes del 15 de Noviembre",
     locationTitle: "¿Cómo llegar?",
     locationSubtitle: "Te esperamos con los brazos abiertos para celebrar juntos",
     footerLove: "Con amor",

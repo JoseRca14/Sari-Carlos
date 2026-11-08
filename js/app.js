@@ -142,6 +142,9 @@ function hydrateContent(cfg) {
     setText("final-thanks-text", cfg.texts.finalMessage);
     setText("footer-love-text", cfg.texts.footerLove || "Con amor");
     setText("footer-powered", cfg.texts.footerPoweredBy || "Invitación digital");
+    if (cfg.texts.rsvpSubtitle) {
+      setText("rsvp-subtitle", cfg.texts.rsvpSubtitle);
+    }
   }
 
   // Fotografías
